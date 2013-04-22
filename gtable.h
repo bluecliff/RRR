@@ -18,19 +18,22 @@
  *
  * @returns   组合数值
  */
+#define D (sizeof(u64)*8)
 int cal(int n, int m);
 class gtable
 {
 public:
     gtable();
-    gtable(int i);
+    gtable(int b);
     ~gtable();
     int get_rank(int i,int j);
 private:
     u64* g;
     int b;
     int size;
-    int bits_size;
+
+    int* cmap;
+    void makecmap();
 };
 
 #endif
