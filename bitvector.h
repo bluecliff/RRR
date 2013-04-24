@@ -34,9 +34,39 @@ public:
     void init(i64 n);
     i64 setbit(i64 i,int x);
     i64 getbit(i64 i,int x);
+
+    /**
+     * @bref  获取第i类数中的第o个数的第k位的rank值
+     *
+     * @param i
+     * @param o
+     * @param k
+     *
+     * @returns   rank[i,o,k]
+     */
+    int search(int i,int o,int k);
 private:
+    /**
+     * @bref  存储g表的字符串
+     */
     u64* bitvec;
+    /**
+     * @bref  g表的字长度，每一个字是一个u64
+     */
     i64 size;
+    //辅助数组，存储每个数在做输分类的第几个数
+    int* cmap;
+    //每一个类的数总共占位的累加值
+    int* bits_size;
+
+    /**
+     * @bref  把bitvec[i]的第l位开始的串设置为v
+     *
+     * @param i
+     * @param l
+     * @param v
+     */
+    void setbits(int i,int l,u64 v);
 };
 
 #endif

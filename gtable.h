@@ -33,6 +33,14 @@ private:
     int size;
 
     int* cmap;
+    /**
+     * @bref  把bitvec[i]的第l位开始的串设置为v
+     *
+     * @param i
+     * @param l
+     * @param v
+     */
+    void setbits(int i,int l,u64 v);
     void makecmap();
 };
 
