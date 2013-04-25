@@ -18,8 +18,6 @@
  *
  * @returns   组合数值
  */
-#define D (sizeof(u64)*8)
-int cal(int n, int m);
 class gtable
 {
 public:
