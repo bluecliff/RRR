@@ -26,21 +26,35 @@ public:
     gtable();
     gtable(int b);
     ~gtable();
-    int get_rank(int i,int j);
+    /**
+     * @bref  获取第i类数中的第o个数的第k位的rank值
+     *
+     * @param i
+     * @param o
+     * @param k
+     *
+     * @returns   rank[i,o,k]
+     */
+    int search(int i,int o,int k);
 private:
     u64* g;
     int b;
     int size;
 
     int* cmap;
+    //每一个类的数总共占位的累加值
+    int* bits_size;
     /**
-     * @bref  把bitvec[i]的第l位开始的串设置为v
+     * @bref  把g[i]的第l位开始的串设置为v
      *
      * @param i
      * @param l
      * @param v
      */
     void setbits(int i,int l,u64 v);
+    /**
+     * @bref  init the cmap array
+     */
     void makecmap();
 };
 

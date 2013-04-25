@@ -1,0 +1,86 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BIT_VECTOR_H_	bitvector.h	9;"	d
+D	bitvector.h	14;"	d
+D	gtable.h	21;"	d
+GTABLE_H_	gtable.h	9;"	d
+POPCOUNT	gtable.cpp	12;"	d	file:
+POPCOUNT	gtable.cpp	14;"	d	file:
+TYPEDEF_H_	typedef.h	10;"	d
+b	gtable.h	/^    int b;$/;"	m	class:gtable	access:private
+bits_size	gtable.h	/^    int* bits_size;$/;"	m	class:gtable	access:private
+bitvec	bitvector.h	/^    u64* bitvec;$/;"	m	class:bitvec_t	access:private
+bitvec_t	bitvector.cpp	/^bitvec_t::bitvec_t():bitvec(NULL),size(0),bits_size(0)$/;"	f	class:bitvec_t	signature:()
+bitvec_t	bitvector.cpp	/^bitvec_t::bitvec_t(u64* bits, i64 n, i64 bits_size)$/;"	f	class:bitvec_t	signature:(u64* bits, i64 n, i64 bits_size)
+bitvec_t	bitvector.cpp	/^~bitvec_t::bitvec_t()$/;"	f	class:~bitvec_t	signature:()
+bitvec_t	bitvector.h	/^    bitvec_t();$/;"	p	class:bitvec_t	access:public	signature:()
+bitvec_t	bitvector.h	/^    bitvec_t(u64* bits,i64 n,i64 bits_size);$/;"	p	class:bitvec_t	access:public	signature:(u64* bits,i64 n,i64 bits_size)
+bitvec_t	bitvector.h	/^class bitvec_t$/;"	c
+bitvec_t::bitvec	bitvector.h	/^    u64* bitvec;$/;"	m	class:bitvec_t	access:private
+bitvec_t::bitvec_t	bitvector.cpp	/^bitvec_t::bitvec_t():bitvec(NULL),size(0),bits_size(0)$/;"	f	class:bitvec_t	signature:()
+bitvec_t::bitvec_t	bitvector.cpp	/^bitvec_t::bitvec_t(u64* bits, i64 n, i64 bits_size)$/;"	f	class:bitvec_t	signature:(u64* bits, i64 n, i64 bits_size)
+bitvec_t::bitvec_t	bitvector.h	/^    bitvec_t();$/;"	p	class:bitvec_t	access:public	signature:()
+bitvec_t::bitvec_t	bitvector.h	/^    bitvec_t(u64* bits,i64 n,i64 bits_size);$/;"	p	class:bitvec_t	access:public	signature:(u64* bits,i64 n,i64 bits_size)
+bitvec_t::getbit	bitvector.cpp	/^int bitvec_t::getbit(i64 i, int x)$/;"	f	class:bitvec_t	signature:(i64 i, int x)
+bitvec_t::getbit	bitvector.h	/^    i64 getbit(i64 i,int x);$/;"	p	class:bitvec_t	access:public	signature:(i64 i,int x)
+bitvec_t::init	bitvector.h	/^    void init(i64 n);$/;"	p	class:bitvec_t	access:public	signature:(i64 n)
+bitvec_t::setbit	bitvector.cpp	/^int bitvec_t::setbit(i64 i,int x)$/;"	f	class:bitvec_t	signature:(i64 i,int x)
+bitvec_t::setbit	bitvector.h	/^    i64 setbit(i64 i,int x);$/;"	p	class:bitvec_t	access:public	signature:(i64 i,int x)
+bitvec_t::setbits	bitvector.h	/^    void setbits(int i,int l,u64 v);$/;"	p	class:bitvec_t	access:private	signature:(int i,int l,u64 v)
+bitvec_t::size	bitvector.h	/^    i64 size;$/;"	m	class:bitvec_t	access:private
+bitvec_t::~bitvec_t	bitvector.h	/^    ~bitvec_t();$/;"	p	class:bitvec_t	access:public	signature:()
+blog	gtable.cpp	/^static int blog(i64 x) \/\/求正整数x的对数$/;"	f	file:	signature:(i64 x)
+cal	gtable.cpp	/^static int cal(int n, int m)$/;"	f	file:	signature:(int n, int m)
+cal	gtable.h	/^int cal(int n, int m);$/;"	p	signature:(int n, int m)
+cmap	gtable.h	/^    int* cmap;$/;"	m	class:gtable	access:private
+g	gtable.h	/^    u64* g;$/;"	m	class:gtable	access:private
+get_rank	gtable.h	/^    int get_rank(int i,int j);$/;"	p	class:gtable	access:public	signature:(int i,int j)
+getbit	bitvector.cpp	/^int bitvec_t::getbit(i64 i, int x)$/;"	f	class:bitvec_t	signature:(i64 i, int x)
+getbit	bitvector.h	/^    i64 getbit(i64 i,int x);$/;"	p	class:bitvec_t	access:public	signature:(i64 i,int x)
+gtable	gtable.cpp	/^gtable::gtable()$/;"	f	class:gtable	signature:()
+gtable	gtable.cpp	/^gtable::gtable(int b)$/;"	f	class:gtable	signature:(int b)
+gtable	gtable.cpp	/^~gtable::gtable()$/;"	f	class:~gtable	signature:()
+gtable	gtable.h	/^    gtable();$/;"	p	class:gtable	access:public	signature:()
+gtable	gtable.h	/^    gtable(int b);$/;"	p	class:gtable	access:public	signature:(int b)
+gtable	gtable.h	/^class gtable$/;"	c
+gtable::b	gtable.h	/^    int b;$/;"	m	class:gtable	access:private
+gtable::bits_size	gtable.h	/^    int* bits_size;$/;"	m	class:gtable	access:private
+gtable::cmap	gtable.h	/^    int* cmap;$/;"	m	class:gtable	access:private
+gtable::g	gtable.h	/^    u64* g;$/;"	m	class:gtable	access:private
+gtable::get_rank	gtable.h	/^    int get_rank(int i,int j);$/;"	p	class:gtable	access:public	signature:(int i,int j)
+gtable::gtable	gtable.cpp	/^gtable::gtable()$/;"	f	class:gtable	signature:()
+gtable::gtable	gtable.cpp	/^gtable::gtable(int b)$/;"	f	class:gtable	signature:(int b)
+gtable::gtable	gtable.h	/^    gtable();$/;"	p	class:gtable	access:public	signature:()
+gtable::gtable	gtable.h	/^    gtable(int b);$/;"	p	class:gtable	access:public	signature:(int b)
+gtable::makecmap	gtable.cpp	/^void gtable::makecmap()$/;"	f	class:gtable	signature:()
+gtable::makecmap	gtable.h	/^    void makecmap();$/;"	p	class:gtable	access:private	signature:()
+gtable::search	gtable.cpp	/^int gtable::search(int i,int o, int k)$/;"	f	class:gtable	signature:(int i,int o, int k)
+gtable::search	gtable.h	/^    int search(int i,int o,int k);$/;"	p	class:gtable	access:public	signature:(int i,int o,int k)
+gtable::setbits	gtable.cpp	/^void gtable::setbits(int i,int l,u64 v)$/;"	f	class:gtable	signature:(int i,int l,u64 v)
+gtable::setbits	gtable.h	/^    void setbits(int i,int l,u64 v);$/;"	p	class:gtable	access:private	signature:(int i,int l,u64 v)
+gtable::size	gtable.h	/^    int size;$/;"	m	class:gtable	access:private
+gtable::~gtable	gtable.h	/^    ~gtable();$/;"	p	class:gtable	access:public	signature:()
+i64	typedef.h	/^typedef int64_t i64;$/;"	t
+init	bitvector.cpp	/^void bitvec_t init(i64 bits_size)$/;"	f	signature:(i64 bits_size)
+init	bitvector.h	/^    void init(i64 n);$/;"	p	class:bitvec_t	access:public	signature:(i64 n)
+makecmap	gtable.cpp	/^void gtable::makecmap()$/;"	f	class:gtable	signature:()
+makecmap	gtable.h	/^    void makecmap();$/;"	p	class:gtable	access:private	signature:()
+popcount	gtable.cpp	/^static u64 popcount(u64 x)$/;"	f	file:	signature:(u64 x)
+search	gtable.cpp	/^int gtable::search(int i,int o, int k)$/;"	f	class:gtable	signature:(int i,int o, int k)
+search	gtable.h	/^    int search(int i,int o,int k);$/;"	p	class:gtable	access:public	signature:(int i,int o,int k)
+setbit	bitvector.cpp	/^int bitvec_t::setbit(i64 i,int x)$/;"	f	class:bitvec_t	signature:(i64 i,int x)
+setbit	bitvector.h	/^    i64 setbit(i64 i,int x);$/;"	p	class:bitvec_t	access:public	signature:(i64 i,int x)
+setbits	bitvector.h	/^    void setbits(int i,int l,u64 v);$/;"	p	class:bitvec_t	access:private	signature:(int i,int l,u64 v)
+setbits	gtable.cpp	/^void gtable::setbits(int i,int l,u64 v)$/;"	f	class:gtable	signature:(int i,int l,u64 v)
+setbits	gtable.h	/^    void setbits(int i,int l,u64 v);$/;"	p	class:gtable	access:private	signature:(int i,int l,u64 v)
+size	bitvector.h	/^    i64 size;$/;"	m	class:bitvec_t	access:private
+size	gtable.h	/^    int size;$/;"	m	class:gtable	access:private
+u64	typedef.h	/^typedef uint64_t u64;$/;"	t
+~bitvec_t	bitvector.h	/^    ~bitvec_t();$/;"	p	class:bitvec_t	access:public	signature:()
+~bitvec_t::bitvec_t	bitvector.cpp	/^~bitvec_t::bitvec_t()$/;"	f	class:~bitvec_t	signature:()
+~gtable	gtable.h	/^    ~gtable();$/;"	p	class:gtable	access:public	signature:()
+~gtable::gtable	gtable.cpp	/^~gtable::gtable()$/;"	f	class:~gtable	signature:()

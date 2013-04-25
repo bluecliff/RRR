@@ -126,7 +126,7 @@ void gtable::makecmap()
 
 void gtable::setbits(int i,int l,u64 v)
 {
-    this->bitvec[i]=(this->bitvec[i] | (v << l));
+    this->g[i]=(this->g[i] | (v << l));
 }
 
 int gtable::search(int i,int o, int k)
@@ -140,11 +140,11 @@ int gtable::search(int i,int o, int k)
     int m=offset/D;
     int n=offset%D;
     if((D-n)>=(blog(i)+1))
-        return (bitvec[m] << (D-n-(blog(i)+1)) >> (D-(blog(i)+1)));
+        return (g[m] << (D-n-(blog(i)+1)) >> (D-(blog(i)+1)));
     else
     {
-        int low= (bitvec[m] >> n);
-        int high= (bitvec[m+1] << (D-((blog(i)+1)-(D-n)))) >> (D-(blog(i)+1));
+        int low= (g[m] >> n);
+        int high= (g[m+1] << (D-((blog(i)+1)-(D-n)))) >> (D-(blog(i)+1));
         return low+high;
     }
 }
