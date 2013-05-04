@@ -1,7 +1,22 @@
 #include "bitvector.h"
 
-bitvec_t::bitvec_t():bitvec(NULL),size(0),bits_size(0)
+bitvec_t::bitvec_t()
 {
+    this->bit_size=0;
+    bitvec.push_back(0);
+}
+
+bitvec_t::setbits(int k, u32 v)
+{
+    int hole= D - bit_size % D;
+    if(hole >= k)
+    {
+
+    }
+    else
+    {
+        bitvec.push_back(0);
+    }
 }
 //n为64位整数数组的长度,bits_size为01序列的长度
 bitvec_t::bitvec_t(u64* bits, i64 n, i64 bits_size)

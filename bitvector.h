@@ -11,48 +11,44 @@
 #include <typedef.h>
 
 #include <fstream>
-#define D (sizeof(u64)*8)
+#include <vector>
 
 using namespace std;
 
 /**
- * @bref  位数组
+ * @bref  实现一个自增长的位数组，可以向其中写入任意宽度的位串，同时提供根据任意位置，取出任意长的串，
+ * 这个任意长不大于64，故取出的数返回一个u64即可
  */
 class bitvec_t
 {
 public:
     bitvec_t();
     /**
-     * @bref  创建位数组
-     *
-     * @param bits 01序列
-     * @param n 64位数组的长度
-     * @param bits_size 01串的长度
-     */
-    bitvec_t(u64* bits,i64 n,i64 bits_size);
-    ~bitvec_t();
-    void init(i64 n);
-    i64 setbit(i64 i,int x);
-    i64 getbit(i64 i,int x);
-
-private:
-    /**
-     * @bref  存储g表的字符串
-     */
-    u64* bitvec;
-    /**
-     * @bref  g表的字长度，每一个字是一个u64
-     */
-    i64 size;
-
-    /**
-     * @bref  把bitvec[i]的第l位开始的串设置为v
+     * @bref  插入一个宽为k位的01串v(低k位)到序列的第i个位置
      *
      * @param i
-     * @param l
+     * @param k
      * @param v
      */
-    void setbits(int i,int l,u64 v);
+    void setbits(u64 i,int k,int v);
+    /**
+     * @bref  获取第i位起的长为k的01序列
+     *
+     * @param i
+     * @param k
+     *
+     * @returns
+     */
+    int getbits(u64 i, int k);
+private:
+    /**
+     * @bref  基础数组，存储01序列
+     */
+    vector<u64> bitvec;
+    /**
+     * @bref  01序列的长度
+     */
+    u64 bit_size;
 };
 
 #endif
