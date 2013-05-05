@@ -177,13 +177,45 @@ dtable::dtable(u64* bitvec,int* rank,int n)
 		temp_l[(index+b)/b]=d.getsize()-temp_p[(index+b)/s];
 	}
 
+	//处理最后有半个b块的情况
+	if(n%b)
+	{
+		int index=n-n%b;
+		int i=index/D;
+		int j=index%D;
+		int hole=D-j;
+		if(hole>=(n%b))
+		{
+			u64 v = bitvec[i]>>j;
+			if (v==0)
+			{
+				d.setbits(1,0);
+			}
+			else
+			{
+				int c=popcount(v);
+				int o=cmap[v];
+				d.setbits(blog(b)+1,c);
+				d.setbits(blog(cal(b,c))+1,o);
+			}
+		}
+		else
+		{
+			u64 v_low = bitvec[i]>>j;
+			u64 v_high = bitvec[i+1]<<hole;
+			int c=popcount(v_low+v_high);
+			int o=cmap[v_low+v_high];
+			d.setbits(blog(b)+1,c);
+			d.setbits(blog(cal(b,c))+1,o);
+		}
+	}
 
+	this->p=new compactIntArray(temp_p+1,size/s,temp_p[size/s]);
+	this->l=new compactIntArray(temp_l+1,size/b,temp_l[size/b]);
 
-	this->p=new compactIntArray(temp_p,size/s,temp_p[size/s-1]);
-	this->l=new compactIntArray(temp_l,(size/s+1)*(s/b-1),temp_l[(size/s+1)*(s/b-1)-1]);
-
+	delete[] temp_l;
+	delete[] temp_p;
 	delete[] cmap;
-
 }
 
 
