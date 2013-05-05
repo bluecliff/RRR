@@ -1,4 +1,5 @@
 #include "bitvector.h"
+#include <cstdlib>
 
 bitvec_t::bitvec_t()
 {
@@ -6,60 +7,57 @@ bitvec_t::bitvec_t()
     bitvec.push_back(0);
 }
 
-bitvec_t::setbits(int k, u32 v)
+void bitvec_t::setbits(int k, u64 v)
 {
-    int hole= D - bit_size % D;
-    if(hole >= k)
-    {
+    int i = bit_size/D;
+    int j = bit_size%D;
 
+    int hole= D - j;
+
+    if(hole >k)
+    {
+        bitvec[i] |= (v << j);
+        bit_size+=k;
+    }
+    else if(hole == k)
+    {
+        bitvec[i] |= (v << j);
+        bit_size+=k;
+        bitvec.push_back(0);
     }
     else
     {
         bitvec.push_back(0);
+        bitvec[i] |= (v << j);
+        bitvec[i+1] |= (v >> hole);
+        bit_size+=k;
     }
 }
-//n为64位整数数组的长度,bits_size为01序列的长度
-bitvec_t::bitvec_t(u64* bits, i64 n, i64 bits_size)
-{
-    this->size=n;
-    this->bits_size=bits_size;
-    this->bitvec=new u64[size];
-    memcpy(bitvec,bits,sizeof(u64)*size);
-}
 
-~bitvec_t::bitvec_t()
+u64 bitvec_t::getbits(u64 index,int k)
 {
-    this->size=0;
-    this->bits_size=0;
-    delete[] this->bitvec;
-}
-void bitvec_t init(i64 bits_size)
-{
-    this->size=bits_size/D+1;
-    this->bits_size=bits_size;
-    this->bitvec=new u64[this->size];
-    memset(this->bitvec,0,sizeof(u64)*this->size);
-}
-int bitvec_t::setbit(i64 i,int x)
-{
-    i64 j,l;
-    j = i / D;
-    l = i % D;
-    if (x==0) bitvec[j] &= (~(1L<<l));
-    else if (x==1) bitvec[j] |= (1L<<l);
-    else {
-        printf("error setbit x=%d¥n",x);
-        exit(1);
+    if(index > bit_size)
+    {
+        exit(-1);
     }
-    return x;
+    int i = index/D;
+    int j = index%D;
 
-}
-int bitvec_t::getbit(i64 i, int x)
-{
-    i64 j,l;
+    int hole= D-j;
 
-    j = i / D;
-    l = i % D;
-    return (bitvec[j] >> l) & 1;
+    if(hole >= k)
+    {
+        u64 res = bitvec[i] >> j;
+        res &= ((0UL-1) >> (D-k));
+        return res;
+    }
+    else
+    {
+        u64 res_low = bitvec[i] >> j;
+        u64 res_high = bitvec[i+1] << hole;
+        res_high &= ((0UL-1)>>(D-k));
+
+        return res_low+res_high;
+    }
 }
 

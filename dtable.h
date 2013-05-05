@@ -48,14 +48,8 @@ public:
      */
     int searchrank(int i);
 private:
-    /**
-     * @bref  d表的基本存储类型，存储由(o,c)对组成的01序列
-     */
-    u64* d;
-    /**
-     * @bref  d的字大小
-     */
-    int size;
+	bitvec_t d;
+	int size;
     /**
      * @bref    bitvector的分块后的block的位长
      */

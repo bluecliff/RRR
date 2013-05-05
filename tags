@@ -5,42 +5,118 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 BIT_VECTOR_H_	bitvector.h	9;"	d
-D	bitvector.h	14;"	d
-D	gtable.h	21;"	d
+COMMONS_H_	commons.h	9;"	d
+D	typedef.h	16;"	d
+DTABLE_H_	dtable.h	9;"	d
+GENERAL_INT_H_	compactIntArray.h	10;"	d
 GTABLE_H_	gtable.h	9;"	d
-POPCOUNT	gtable.cpp	12;"	d	file:
-POPCOUNT	gtable.cpp	14;"	d	file:
+POPCOUNT	commons.h	16;"	d
+POPCOUNT	commons.h	18;"	d
+Reference	compactIntArray.h	/^				Reference(compactIntArray& _compact_int_array,uint _index):_pCompactIntArray(&_compact_int_array),index(_index)$/;"	f	class:compactIntArray::Reference	access:private	signature:(compactIntArray& _compact_int_array,uint _index)
+Reference	compactIntArray.h	/^		class Reference$/;"	c	class:compactIntArray	access:public
 TYPEDEF_H_	typedef.h	10;"	d
+_pCompactIntArray	compactIntArray.h	/^				compactIntArray* _pCompactIntArray;$/;"	m	class:compactIntArray::Reference	access:private
+array	compactIntArray.h	/^        ulong* array;$/;"	m	class:compactIntArray	access:private
+b	dtable.h	/^    int b;$/;"	m	class:dtable	access:private
 b	gtable.h	/^    int b;$/;"	m	class:gtable	access:private
+bit_size	bitvector.h	/^    u64 bit_size;$/;"	m	class:bitvec_t	access:private
 bits_size	gtable.h	/^    int* bits_size;$/;"	m	class:gtable	access:private
-bitvec	bitvector.h	/^    u64* bitvec;$/;"	m	class:bitvec_t	access:private
-bitvec_t	bitvector.cpp	/^bitvec_t::bitvec_t():bitvec(NULL),size(0),bits_size(0)$/;"	f	class:bitvec_t	signature:()
-bitvec_t	bitvector.cpp	/^bitvec_t::bitvec_t(u64* bits, i64 n, i64 bits_size)$/;"	f	class:bitvec_t	signature:(u64* bits, i64 n, i64 bits_size)
-bitvec_t	bitvector.cpp	/^~bitvec_t::bitvec_t()$/;"	f	class:~bitvec_t	signature:()
+bitvec	bitvector.h	/^    vector<u64> bitvec;$/;"	m	class:bitvec_t	access:private
+bitvec_t	bitvector.cpp	/^bitvec_t::bitvec_t()$/;"	f	class:bitvec_t	signature:()
 bitvec_t	bitvector.h	/^    bitvec_t();$/;"	p	class:bitvec_t	access:public	signature:()
-bitvec_t	bitvector.h	/^    bitvec_t(u64* bits,i64 n,i64 bits_size);$/;"	p	class:bitvec_t	access:public	signature:(u64* bits,i64 n,i64 bits_size)
 bitvec_t	bitvector.h	/^class bitvec_t$/;"	c
-bitvec_t::bitvec	bitvector.h	/^    u64* bitvec;$/;"	m	class:bitvec_t	access:private
-bitvec_t::bitvec_t	bitvector.cpp	/^bitvec_t::bitvec_t():bitvec(NULL),size(0),bits_size(0)$/;"	f	class:bitvec_t	signature:()
-bitvec_t::bitvec_t	bitvector.cpp	/^bitvec_t::bitvec_t(u64* bits, i64 n, i64 bits_size)$/;"	f	class:bitvec_t	signature:(u64* bits, i64 n, i64 bits_size)
+bitvec_t::bit_size	bitvector.h	/^    u64 bit_size;$/;"	m	class:bitvec_t	access:private
+bitvec_t::bitvec	bitvector.h	/^    vector<u64> bitvec;$/;"	m	class:bitvec_t	access:private
+bitvec_t::bitvec_t	bitvector.cpp	/^bitvec_t::bitvec_t()$/;"	f	class:bitvec_t	signature:()
 bitvec_t::bitvec_t	bitvector.h	/^    bitvec_t();$/;"	p	class:bitvec_t	access:public	signature:()
-bitvec_t::bitvec_t	bitvector.h	/^    bitvec_t(u64* bits,i64 n,i64 bits_size);$/;"	p	class:bitvec_t	access:public	signature:(u64* bits,i64 n,i64 bits_size)
-bitvec_t::getbit	bitvector.cpp	/^int bitvec_t::getbit(i64 i, int x)$/;"	f	class:bitvec_t	signature:(i64 i, int x)
-bitvec_t::getbit	bitvector.h	/^    i64 getbit(i64 i,int x);$/;"	p	class:bitvec_t	access:public	signature:(i64 i,int x)
-bitvec_t::init	bitvector.h	/^    void init(i64 n);$/;"	p	class:bitvec_t	access:public	signature:(i64 n)
-bitvec_t::setbit	bitvector.cpp	/^int bitvec_t::setbit(i64 i,int x)$/;"	f	class:bitvec_t	signature:(i64 i,int x)
-bitvec_t::setbit	bitvector.h	/^    i64 setbit(i64 i,int x);$/;"	p	class:bitvec_t	access:public	signature:(i64 i,int x)
-bitvec_t::setbits	bitvector.h	/^    void setbits(int i,int l,u64 v);$/;"	p	class:bitvec_t	access:private	signature:(int i,int l,u64 v)
-bitvec_t::size	bitvector.h	/^    i64 size;$/;"	m	class:bitvec_t	access:private
-bitvec_t::~bitvec_t	bitvector.h	/^    ~bitvec_t();$/;"	p	class:bitvec_t	access:public	signature:()
-blog	gtable.cpp	/^static int blog(i64 x) \/\/求正整数x的对数$/;"	f	file:	signature:(i64 x)
-cal	gtable.cpp	/^static int cal(int n, int m)$/;"	f	file:	signature:(int n, int m)
-cal	gtable.h	/^int cal(int n, int m);$/;"	p	signature:(int n, int m)
+bitvec_t::getbits	bitvector.cpp	/^u64 bitvec_t::getbits(u64 index,int k)$/;"	f	class:bitvec_t	signature:(u64 index,int k)
+bitvec_t::getbits	bitvector.h	/^    u64 getbits(u64 index, int k);$/;"	p	class:bitvec_t	access:public	signature:(u64 index, int k)
+bitvec_t::setbits	bitvector.cpp	/^void bitvec_t::setbits(int k, u64 v)$/;"	f	class:bitvec_t	signature:(int k, u64 v)
+bitvec_t::setbits	bitvector.h	/^    void setbits(int k,u64 v);$/;"	p	class:bitvec_t	access:public	signature:(int k,u64 v)
+blog	commons.cpp	/^int blog(i64 x) \/\/求正整数x的对数$/;"	f	signature:(i64 x)
+blog	commons.h	/^int blog(i64 x); \/\/求正整数x的对数$/;"	p	signature:(i64 x)
+cal	commons.cpp	/^int cal(int n, int m)$/;"	f	signature:(int n, int m)
+cal	commons.h	/^int cal(int n, int m);$/;"	p	signature:(int n, int m)
 cmap	gtable.h	/^    int* cmap;$/;"	m	class:gtable	access:private
+compactIntArray	compactIntArray.cpp	/^compactIntArray::compactIntArray()$/;"	f	class:compactIntArray	signature:()
+compactIntArray	compactIntArray.cpp	/^compactIntArray::compactIntArray(compactIntArray& object):size(object.size), wordsize(object.wordsize), innersize(object.innersize)$/;"	f	class:compactIntArray	signature:(compactIntArray& object)
+compactIntArray	compactIntArray.cpp	/^compactIntArray::compactIntArray(uint n, uint max)$/;"	f	class:compactIntArray	signature:(uint n, uint max)
+compactIntArray	compactIntArray.cpp	/^compactIntArray::compactIntArray(uint* arr,uint n,uint max)$/;"	f	class:compactIntArray	signature:(uint* arr,uint n,uint max)
+compactIntArray	compactIntArray.h	/^        compactIntArray();$/;"	p	class:compactIntArray	access:public	signature:()
+compactIntArray	compactIntArray.h	/^        compactIntArray(compactIntArray& object);$/;"	p	class:compactIntArray	access:public	signature:(compactIntArray& object)
+compactIntArray	compactIntArray.h	/^        compactIntArray(uint n, uint max);$/;"	p	class:compactIntArray	access:public	signature:(uint n, uint max)
+compactIntArray	compactIntArray.h	/^        compactIntArray(uint* arr, uint n,uint max);$/;"	p	class:compactIntArray	access:public	signature:(uint* arr, uint n,uint max)
+compactIntArray	compactIntArray.h	/^class compactIntArray$/;"	c
+compactIntArray::Reference	compactIntArray.h	/^		class Reference$/;"	c	class:compactIntArray	access:public
+compactIntArray::Reference::Reference	compactIntArray.h	/^				Reference(compactIntArray& _compact_int_array,uint _index):_pCompactIntArray(&_compact_int_array),index(_index)$/;"	f	class:compactIntArray::Reference	access:private	signature:(compactIntArray& _compact_int_array,uint _index)
+compactIntArray::Reference::_pCompactIntArray	compactIntArray.h	/^				compactIntArray* _pCompactIntArray;$/;"	m	class:compactIntArray::Reference	access:private
+compactIntArray::Reference::index	compactIntArray.h	/^				uint index;$/;"	m	class:compactIntArray::Reference	access:private
+compactIntArray::Reference::operator =	compactIntArray.h	/^				void operator = (uint value)$/;"	f	class:compactIntArray::Reference	access:public	signature:(uint value)
+compactIntArray::Reference::operator uint	compactIntArray.h	/^				operator uint() const{ return _pCompactIntArray->get(index);};$/;"	f	class:compactIntArray::Reference	access:public	signature:() const
+compactIntArray::array	compactIntArray.h	/^        ulong* array;$/;"	m	class:compactIntArray	access:private
+compactIntArray::compactIntArray	compactIntArray.cpp	/^compactIntArray::compactIntArray()$/;"	f	class:compactIntArray	signature:()
+compactIntArray::compactIntArray	compactIntArray.cpp	/^compactIntArray::compactIntArray(compactIntArray& object):size(object.size), wordsize(object.wordsize), innersize(object.innersize)$/;"	f	class:compactIntArray	signature:(compactIntArray& object)
+compactIntArray::compactIntArray	compactIntArray.cpp	/^compactIntArray::compactIntArray(uint n, uint max)$/;"	f	class:compactIntArray	signature:(uint n, uint max)
+compactIntArray::compactIntArray	compactIntArray.cpp	/^compactIntArray::compactIntArray(uint* arr,uint n,uint max)$/;"	f	class:compactIntArray	signature:(uint* arr,uint n,uint max)
+compactIntArray::compactIntArray	compactIntArray.h	/^        compactIntArray();$/;"	p	class:compactIntArray	access:public	signature:()
+compactIntArray::compactIntArray	compactIntArray.h	/^        compactIntArray(compactIntArray& object);$/;"	p	class:compactIntArray	access:public	signature:(compactIntArray& object)
+compactIntArray::compactIntArray	compactIntArray.h	/^        compactIntArray(uint n, uint max);$/;"	p	class:compactIntArray	access:public	signature:(uint n, uint max)
+compactIntArray::compactIntArray	compactIntArray.h	/^        compactIntArray(uint* arr, uint n,uint max);$/;"	p	class:compactIntArray	access:public	signature:(uint* arr, uint n,uint max)
+compactIntArray::get	compactIntArray.cpp	/^uint compactIntArray::get(uint index) const$/;"	f	class:compactIntArray	signature:(uint index) const
+compactIntArray::get	compactIntArray.h	/^		uint get(uint index) const;$/;"	p	class:compactIntArray	access:public	signature:(uint index) const
+compactIntArray::getfiled	compactIntArray.cpp	/^ulong compactIntArray::getfiled(uint index) const$/;"	f	class:compactIntArray	signature:(uint index) const
+compactIntArray::getfiled	compactIntArray.h	/^        ulong getfiled(uint index) const;$/;"	p	class:compactIntArray	access:private	signature:(uint index) const
+compactIntArray::getsize	compactIntArray.cpp	/^uint compactIntArray::getsize()$/;"	f	class:compactIntArray	signature:()
+compactIntArray::getsize	compactIntArray.h	/^		uint getsize();$/;"	p	class:compactIntArray	access:public	signature:()
+compactIntArray::init	compactIntArray.cpp	/^void compactIntArray::init(uint* arr)$/;"	f	class:compactIntArray	signature:(uint* arr)
+compactIntArray::init	compactIntArray.h	/^        void init(uint* arr);$/;"	p	class:compactIntArray	access:private	signature:(uint* arr)
+compactIntArray::innersize	compactIntArray.h	/^        uint innersize;$/;"	m	class:compactIntArray	access:private
+compactIntArray::operator []	compactIntArray.h	/^		Reference operator[](uint index)$/;"	f	class:compactIntArray	access:public	signature:(uint index)
+compactIntArray::operator []	compactIntArray.h	/^		uint operator[](uint index) const$/;"	f	class:compactIntArray	access:public	signature:(uint index) const
+compactIntArray::read	compactIntArray.cpp	/^bool compactIntArray::read(std::ifstream& fin)$/;"	f	class:compactIntArray	signature:(std::ifstream& fin)
+compactIntArray::read	compactIntArray.h	/^        bool read(std::ifstream& fin);$/;"	p	class:compactIntArray	access:public	signature:(std::ifstream& fin)
+compactIntArray::set	compactIntArray.cpp	/^void compactIntArray::set(uint index, ulong value)$/;"	f	class:compactIntArray	signature:(uint index, ulong value)
+compactIntArray::set	compactIntArray.h	/^		void set(uint index,ulong value);$/;"	p	class:compactIntArray	access:public	signature:(uint index,ulong value)
+compactIntArray::setfiled	compactIntArray.cpp	/^void compactIntArray::setfiled(uint index,ulong value)$/;"	f	class:compactIntArray	signature:(uint index,ulong value)
+compactIntArray::setfiled	compactIntArray.h	/^        void setfiled(uint index,ulong value);$/;"	p	class:compactIntArray	access:private	signature:(uint index,ulong value)
+compactIntArray::size	compactIntArray.h	/^        uint size;$/;"	m	class:compactIntArray	access:private
+compactIntArray::wordsize	compactIntArray.h	/^        uint wordsize;$/;"	m	class:compactIntArray	access:private
+compactIntArray::write	compactIntArray.cpp	/^bool compactIntArray::write(std::ofstream& fout)$/;"	f	class:compactIntArray	signature:(std::ofstream& fout)
+compactIntArray::write	compactIntArray.h	/^        bool write(std::ofstream& fout);$/;"	p	class:compactIntArray	access:public	signature:(std::ofstream& fout)
+compactIntArray::~compactIntArray	compactIntArray.cpp	/^compactIntArray::~compactIntArray()$/;"	f	class:compactIntArray	signature:()
+compactIntArray::~compactIntArray	compactIntArray.h	/^        ~compactIntArray();$/;"	p	class:compactIntArray	access:public	signature:()
+d	dtable.h	/^	bitvec_t d;$/;"	m	class:dtable	access:private
+datble	dtable.cpp	/^dtable::datble()$/;"	f	class:dtable	signature:()
+dtable	dtable.cpp	/^dtable::dtable(u64* bitvec,int* rank,int n)$/;"	f	class:dtable	signature:(u64* bitvec,int* rank,int n)
+dtable	dtable.cpp	/^~dtable::dtable()$/;"	f	class:~dtable	signature:()
+dtable	dtable.h	/^    dtable();$/;"	p	class:dtable	access:public	signature:()
+dtable	dtable.h	/^    dtable(u64* bitvec,int* rank,int n);$/;"	p	class:dtable	access:public	signature:(u64* bitvec,int* rank,int n)
+dtable	dtable.h	/^class dtable$/;"	c
+dtable::b	dtable.h	/^    int b;$/;"	m	class:dtable	access:private
+dtable::d	dtable.h	/^	bitvec_t d;$/;"	m	class:dtable	access:private
+dtable::datble	dtable.cpp	/^dtable::datble()$/;"	f	class:dtable	signature:()
+dtable::dtable	dtable.cpp	/^dtable::dtable(u64* bitvec,int* rank,int n)$/;"	f	class:dtable	signature:(u64* bitvec,int* rank,int n)
+dtable::dtable	dtable.h	/^    dtable();$/;"	p	class:dtable	access:public	signature:()
+dtable::dtable	dtable.h	/^    dtable(u64* bitvec,int* rank,int n);$/;"	p	class:dtable	access:public	signature:(u64* bitvec,int* rank,int n)
+dtable::init	dtable.h	/^    bool init();$/;"	p	class:dtable	access:public	signature:()
+dtable::l	dtable.h	/^    compactIntArray* l;$/;"	m	class:dtable	access:private
+dtable::p	dtable.h	/^    compactIntArray* p;$/;"	m	class:dtable	access:private
+dtable::q	dtable.h	/^    compactIntArray* q;$/;"	m	class:dtable	access:private
+dtable::r	dtable.h	/^    compactIntArray* r;$/;"	m	class:dtable	access:private
+dtable::s	dtable.h	/^    int s;$/;"	m	class:dtable	access:private
+dtable::searchd	dtable.h	/^    void searchd(int i,int*o,int* c);$/;"	p	class:dtable	access:public	signature:(int i,int*o,int* c)
+dtable::searchrank	dtable.h	/^    int searchrank(int i);$/;"	p	class:dtable	access:public	signature:(int i)
+dtable::size	dtable.h	/^	int size;$/;"	m	class:dtable	access:private
+dtable::~dtable	dtable.h	/^    ~dtable();$/;"	p	class:dtable	access:public	signature:()
 g	gtable.h	/^    u64* g;$/;"	m	class:gtable	access:private
-get_rank	gtable.h	/^    int get_rank(int i,int j);$/;"	p	class:gtable	access:public	signature:(int i,int j)
-getbit	bitvector.cpp	/^int bitvec_t::getbit(i64 i, int x)$/;"	f	class:bitvec_t	signature:(i64 i, int x)
-getbit	bitvector.h	/^    i64 getbit(i64 i,int x);$/;"	p	class:bitvec_t	access:public	signature:(i64 i,int x)
+get	compactIntArray.cpp	/^uint compactIntArray::get(uint index) const$/;"	f	class:compactIntArray	signature:(uint index) const
+get	compactIntArray.h	/^		uint get(uint index) const;$/;"	p	class:compactIntArray	access:public	signature:(uint index) const
+getbits	bitvector.cpp	/^u64 bitvec_t::getbits(u64 index,int k)$/;"	f	class:bitvec_t	signature:(u64 index,int k)
+getbits	bitvector.h	/^    u64 getbits(u64 index, int k);$/;"	p	class:bitvec_t	access:public	signature:(u64 index, int k)
+getfiled	compactIntArray.cpp	/^ulong compactIntArray::getfiled(uint index) const$/;"	f	class:compactIntArray	signature:(uint index) const
+getfiled	compactIntArray.h	/^        ulong getfiled(uint index) const;$/;"	p	class:compactIntArray	access:private	signature:(uint index) const
+getsize	compactIntArray.cpp	/^uint compactIntArray::getsize()$/;"	f	class:compactIntArray	signature:()
+getsize	compactIntArray.h	/^		uint getsize();$/;"	p	class:compactIntArray	access:public	signature:()
 gtable	gtable.cpp	/^gtable::gtable()$/;"	f	class:gtable	signature:()
 gtable	gtable.cpp	/^gtable::gtable(int b)$/;"	f	class:gtable	signature:(int b)
 gtable	gtable.cpp	/^~gtable::gtable()$/;"	f	class:~gtable	signature:()
@@ -51,7 +127,6 @@ gtable::b	gtable.h	/^    int b;$/;"	m	class:gtable	access:private
 gtable::bits_size	gtable.h	/^    int* bits_size;$/;"	m	class:gtable	access:private
 gtable::cmap	gtable.h	/^    int* cmap;$/;"	m	class:gtable	access:private
 gtable::g	gtable.h	/^    u64* g;$/;"	m	class:gtable	access:private
-gtable::get_rank	gtable.h	/^    int get_rank(int i,int j);$/;"	p	class:gtable	access:public	signature:(int i,int j)
 gtable::gtable	gtable.cpp	/^gtable::gtable()$/;"	f	class:gtable	signature:()
 gtable::gtable	gtable.cpp	/^gtable::gtable(int b)$/;"	f	class:gtable	signature:(int b)
 gtable::gtable	gtable.h	/^    gtable();$/;"	p	class:gtable	access:public	signature:()
@@ -65,22 +140,51 @@ gtable::setbits	gtable.h	/^    void setbits(int i,int l,u64 v);$/;"	p	class:gtab
 gtable::size	gtable.h	/^    int size;$/;"	m	class:gtable	access:private
 gtable::~gtable	gtable.h	/^    ~gtable();$/;"	p	class:gtable	access:public	signature:()
 i64	typedef.h	/^typedef int64_t i64;$/;"	t
-init	bitvector.cpp	/^void bitvec_t init(i64 bits_size)$/;"	f	signature:(i64 bits_size)
-init	bitvector.h	/^    void init(i64 n);$/;"	p	class:bitvec_t	access:public	signature:(i64 n)
+index	compactIntArray.h	/^				uint index;$/;"	m	class:compactIntArray::Reference	access:private
+init	compactIntArray.cpp	/^void compactIntArray::init(uint* arr)$/;"	f	class:compactIntArray	signature:(uint* arr)
+init	compactIntArray.h	/^        void init(uint* arr);$/;"	p	class:compactIntArray	access:private	signature:(uint* arr)
+init	dtable.h	/^    bool init();$/;"	p	class:dtable	access:public	signature:()
+innersize	compactIntArray.h	/^        uint innersize;$/;"	m	class:compactIntArray	access:private
+l	dtable.h	/^    compactIntArray* l;$/;"	m	class:dtable	access:private
+main	test_bitvec_t.cpp	/^int main()$/;"	f	signature:()
 makecmap	gtable.cpp	/^void gtable::makecmap()$/;"	f	class:gtable	signature:()
 makecmap	gtable.h	/^    void makecmap();$/;"	p	class:gtable	access:private	signature:()
-popcount	gtable.cpp	/^static u64 popcount(u64 x)$/;"	f	file:	signature:(u64 x)
+operator =	compactIntArray.h	/^				void operator = (uint value)$/;"	f	class:compactIntArray::Reference	access:public	signature:(uint value)
+operator []	compactIntArray.h	/^		Reference operator[](uint index)$/;"	f	class:compactIntArray	access:public	signature:(uint index)
+operator []	compactIntArray.h	/^		uint operator[](uint index) const$/;"	f	class:compactIntArray	access:public	signature:(uint index) const
+operator uint	compactIntArray.h	/^				operator uint() const{ return _pCompactIntArray->get(index);};$/;"	f	class:compactIntArray::Reference	access:public	signature:() const
+p	dtable.h	/^    compactIntArray* p;$/;"	m	class:dtable	access:private
+popcount	commons.cpp	/^u64 popcount(u64 x)$/;"	f	signature:(u64 x)
+popcount	commons.h	/^u64 popcount(u64 x);$/;"	p	signature:(u64 x)
+q	dtable.h	/^    compactIntArray* q;$/;"	m	class:dtable	access:private
+r	dtable.h	/^    compactIntArray* r;$/;"	m	class:dtable	access:private
+read	compactIntArray.cpp	/^bool compactIntArray::read(std::ifstream& fin)$/;"	f	class:compactIntArray	signature:(std::ifstream& fin)
+read	compactIntArray.h	/^        bool read(std::ifstream& fin);$/;"	p	class:compactIntArray	access:public	signature:(std::ifstream& fin)
+s	dtable.h	/^    int s;$/;"	m	class:dtable	access:private
 search	gtable.cpp	/^int gtable::search(int i,int o, int k)$/;"	f	class:gtable	signature:(int i,int o, int k)
 search	gtable.h	/^    int search(int i,int o,int k);$/;"	p	class:gtable	access:public	signature:(int i,int o,int k)
-setbit	bitvector.cpp	/^int bitvec_t::setbit(i64 i,int x)$/;"	f	class:bitvec_t	signature:(i64 i,int x)
-setbit	bitvector.h	/^    i64 setbit(i64 i,int x);$/;"	p	class:bitvec_t	access:public	signature:(i64 i,int x)
-setbits	bitvector.h	/^    void setbits(int i,int l,u64 v);$/;"	p	class:bitvec_t	access:private	signature:(int i,int l,u64 v)
+searchd	dtable.h	/^    void searchd(int i,int*o,int* c);$/;"	p	class:dtable	access:public	signature:(int i,int*o,int* c)
+searchrank	dtable.h	/^    int searchrank(int i);$/;"	p	class:dtable	access:public	signature:(int i)
+set	compactIntArray.cpp	/^void compactIntArray::set(uint index, ulong value)$/;"	f	class:compactIntArray	signature:(uint index, ulong value)
+set	compactIntArray.h	/^		void set(uint index,ulong value);$/;"	p	class:compactIntArray	access:public	signature:(uint index,ulong value)
+setbits	bitvector.cpp	/^void bitvec_t::setbits(int k, u64 v)$/;"	f	class:bitvec_t	signature:(int k, u64 v)
+setbits	bitvector.h	/^    void setbits(int k,u64 v);$/;"	p	class:bitvec_t	access:public	signature:(int k,u64 v)
 setbits	gtable.cpp	/^void gtable::setbits(int i,int l,u64 v)$/;"	f	class:gtable	signature:(int i,int l,u64 v)
 setbits	gtable.h	/^    void setbits(int i,int l,u64 v);$/;"	p	class:gtable	access:private	signature:(int i,int l,u64 v)
-size	bitvector.h	/^    i64 size;$/;"	m	class:bitvec_t	access:private
+setfiled	compactIntArray.cpp	/^void compactIntArray::setfiled(uint index,ulong value)$/;"	f	class:compactIntArray	signature:(uint index,ulong value)
+setfiled	compactIntArray.h	/^        void setfiled(uint index,ulong value);$/;"	p	class:compactIntArray	access:private	signature:(uint index,ulong value)
+size	compactIntArray.h	/^        uint size;$/;"	m	class:compactIntArray	access:private
+size	dtable.h	/^	int size;$/;"	m	class:dtable	access:private
 size	gtable.h	/^    int size;$/;"	m	class:gtable	access:private
 u64	typedef.h	/^typedef uint64_t u64;$/;"	t
-~bitvec_t	bitvector.h	/^    ~bitvec_t();$/;"	p	class:bitvec_t	access:public	signature:()
-~bitvec_t::bitvec_t	bitvector.cpp	/^~bitvec_t::bitvec_t()$/;"	f	class:~bitvec_t	signature:()
+uint	compactIntArray.h	/^typedef unsigned int uint;$/;"	t
+ulong	compactIntArray.h	/^typedef unsigned long int ulong;$/;"	t
+wordsize	compactIntArray.h	/^        uint wordsize;$/;"	m	class:compactIntArray	access:private
+write	compactIntArray.cpp	/^bool compactIntArray::write(std::ofstream& fout)$/;"	f	class:compactIntArray	signature:(std::ofstream& fout)
+write	compactIntArray.h	/^        bool write(std::ofstream& fout);$/;"	p	class:compactIntArray	access:public	signature:(std::ofstream& fout)
+~compactIntArray	compactIntArray.cpp	/^compactIntArray::~compactIntArray()$/;"	f	class:compactIntArray	signature:()
+~compactIntArray	compactIntArray.h	/^        ~compactIntArray();$/;"	p	class:compactIntArray	access:public	signature:()
+~dtable	dtable.h	/^    ~dtable();$/;"	p	class:dtable	access:public	signature:()
+~dtable::dtable	dtable.cpp	/^~dtable::dtable()$/;"	f	class:~dtable	signature:()
 ~gtable	gtable.h	/^    ~gtable();$/;"	p	class:gtable	access:public	signature:()
 ~gtable::gtable	gtable.cpp	/^~gtable::gtable()$/;"	f	class:~gtable	signature:()

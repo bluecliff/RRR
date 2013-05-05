@@ -8,7 +8,7 @@
 #ifndef BIT_VECTOR_H_
 #define BIT_VECTOR_H_
 
-#include <typedef.h>
+#include "typedef.h"
 
 #include <fstream>
 #include <vector>
@@ -24,13 +24,12 @@ class bitvec_t
 public:
     bitvec_t();
     /**
-     * @bref  插入一个宽为k位的01串v(低k位)到序列的第i个位置
+     * @bref  插入一个宽为k位的01串v(低k位)到序列的bit_size位置
      *
-     * @param i
      * @param k
      * @param v
      */
-    void setbits(u64 i,int k,int v);
+    void setbits(int k,u64 v);
     /**
      * @bref  获取第i位起的长为k的01序列
      *
@@ -39,7 +38,7 @@ public:
      *
      * @returns
      */
-    int getbits(u64 i, int k);
+    u64 getbits(u64 index, int k);
 private:
     /**
      * @bref  基础数组，存储01序列

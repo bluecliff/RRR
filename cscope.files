@@ -1,5 +1,12 @@
-./bitvector.h
-./gtable.h
-./gtable.cpp
-./typedef.h
 ./bitvector.cpp
+./gtable.h
+./test_bitvec_t.cpp
+./commons.h
+./commons.cpp
+./compactIntArray.cpp
+./dtable.cpp
+./compactIntArray.h
+./gtable.cpp
+./bitvector.h
+./typedef.h
+./dtable.h

@@ -6,7 +6,7 @@
  * @date 2013-04-25
  */
 
-
+#include "commons.h"
 u64 popcount(u64 x)
 {
     u64 r;
@@ -34,8 +34,10 @@ int cal(int n, int m)
     return p;
 }
 
-int blog(i64 x) //求正整数x的对数
+int blog(i64 x) //求整数x的对数
 {
+    if(x==0)
+        return 0;
     int l;
     l = -1;
     while (x>0) {
