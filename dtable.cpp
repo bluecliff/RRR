@@ -10,19 +10,20 @@
 #include "commons.h"
 
 #include <cmath>
+#include <string.h>
 
-void makecmap(int* cmap,u64 total)
+void makecmap(int* cmap,int b,u64 total)
 {
 	int* sum=new int[b+1];
     memset(sum,0,sizeof(int)*(b+1));
     for(u64 i=1;i<total;i++)
     {
-        this->cmap[i]=++sum[popcount(i)];
+        cmap[i]=++sum[popcount(i)];
     }
     delete[] sum;
 }
 
-dtable::datble()
+dtable::dtable()
 {
 	this->size=0;
     this->b=0;
@@ -52,7 +53,8 @@ dtable::dtable(u64* bitvec,int* rank,int n)
 
 	for(int i=s;i<n;i+=s)
 	{
-		r[i/s-1]=rank[i-1];
+		r->set(i/s-1,rank[i-1]);
+		//r[i/s-1]=rank[i-1];
 	}
 
 	int step=0;
@@ -60,11 +62,15 @@ dtable::dtable(u64* bitvec,int* rank,int n)
 	{
 		if(i<s)
 		{
-			q[step++]=rank[i-1];
+			//q[step++]=rank[i-1];
+			q->set(step,rank[i-1]);
+			step++;
 		}
 		else
 		{
-			q[step++]=rank[i-1]-r[i/s-1];
+			q->set(step,rank[i-1]-r->get(i/s-1));
+			step++;
+			//q[step++]=rank[i-1]-r[i/s-1];
 		}
 	}
 
@@ -72,7 +78,7 @@ dtable::dtable(u64* bitvec,int* rank,int n)
 
     u64 total=1UL<<this->b;
     int* cmap=new int[total];
-	makecmap(cmap,total);
+	makecmap(cmap,b,total);
 /*
 	//this->p=new compactIntArray(size/s+1,s);
 	u32* temp_p=new u32[size/s];
@@ -146,13 +152,13 @@ dtable::dtable(u64* bitvec,int* rank,int n)
 			u64 v = (bitvec[i] >> j)&((1UL-1) >> (D-b));
 			if(v==0)
 			{
-				d->setbits(1,0);
+				d.setbits(1,0);
 				continue;
 			}
 			int c = popcount(v);
 			int o = cmap[v];
-			d->setbits(blog(b)+1,c);
-			d->setbits(blog(cal(b,c))+1,o);
+			d.setbits(blog(b)+1,c);
+			d.setbits(blog(cal(b,c))+1,o);
 		}
 		else
 		{
@@ -161,13 +167,13 @@ dtable::dtable(u64* bitvec,int* rank,int n)
 			u64 v = v_low+v_high;
 			if(v==0)
 			{
-				d->setbits(1,0);
+				d.setbits(1,0);
 				continue;
 			}
 			int c = popcount(v);
 			int o = cmap[v];
-			d->setbits(blog(b)+1,c);
-			d->setbits(blog(cal(b,c))+1,o);
+			d.setbits(blog(b)+1,c);
+			d.setbits(blog(cal(b,c))+1,o);
 		}
 		//写入完成
 		if((index+b)%s==0)
@@ -218,7 +224,7 @@ dtable::dtable(u64* bitvec,int* rank,int n)
 	delete[] cmap;
 }
 
-~dtable::dtable()
+dtable::~dtable()
 {
 
     this->b=0;
@@ -234,9 +240,9 @@ void dtable::searchd(int index,int* c,int* o)
 {
 	int ip=index/s;
 	int il=index/b;
-	int p_offset=p[ip];
-	int l_offset=l[il];
-	c=d.getbits(p_offset+l_offset,blog(b)+1);
-	o=d.getbits(p_offset+l_offset+blog(b)+1,blog(cal(b,c))+1);
+	int p_offset=p->get(ip);
+	int l_offset=l->get(il);
+	*c=d.getbits(p_offset+l_offset,blog(b)+1);
+	*o=d.getbits(p_offset+l_offset+blog(b)+1,blog(cal(b,*c))+1);
 }
 

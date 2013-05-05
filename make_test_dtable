@@ -1,0 +1,14 @@
+test_dtable:test_dtable.o dtable.o bitvector.o commons.o compactIntArray.o
+	g++ -g test_dtable.o dtable.o bitvector.o commons.o compactIntArray.o -o test_dtable
+test_dtable.o:test_dtable.cpp
+	g++ -c -g test_dtable.cpp
+dtable.o:dtable.cpp dtable.h
+	g++ -c -g dtable.cpp
+bitvector.o:bitvector.cpp bitvector.h
+	g++ -c -g bitvector.cpp
+commons.o:commons.cpp commons.cpp
+	g++ -c -g commons.cpp
+compactIntArray.o:compactIntArray.cpp compactIntArray.cpp
+	g++ -c -g compactIntArray.cpp
+clean:
+	rm test_dtable test_dtable.o dtable.o bitvector.o commons.o compactIntArray.o

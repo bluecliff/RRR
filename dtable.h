@@ -8,6 +8,7 @@
 #ifndef DTABLE_H_
 #define DTABLE_H_
 #include "typedef.h"
+#include "bitvector.h"
 
 class compactIntArray;
 
