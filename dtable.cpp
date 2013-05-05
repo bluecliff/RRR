@@ -218,12 +218,6 @@ dtable::dtable(u64* bitvec,int* rank,int n)
 	delete[] cmap;
 }
 
-
-dtable::init()
-{
-
-}
-
 ~dtable::dtable()
 {
 
@@ -234,5 +228,15 @@ dtable::init()
     delete this->r;
     delete this->l;
     delete this->q;
+}
+
+void dtable::searchd(int index,int* c,int* o)
+{
+	int ip=index/s;
+	int il=index/b;
+	int p_offset=p[ip];
+	int l_offset=l[il];
+	c=d.getbits(p_offset+l_offset,blog(b)+1);
+	o=d.getbits(p_offset+l_offset+blog(b)+1,blog(cal(b,c))+1);
 }
 

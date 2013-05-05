@@ -26,29 +26,21 @@ public:
     ~dtable();
 
     /**
-     * @bref  初始化d表及辅助表，由构造函数调用
-     *
-     * @returns   成功返回true，失败false
-     */
-    bool init();
-    /**
-     * @bref   搜索d表，查找到第i个位所对应的(o,c)
+     * @bref   搜索d表，查找到第i个位所在的(c,o)
      *
      * @param i
+     * @param c
      * @param o
-     * @param j
      */
-    void searchd(int i,int*o,int* c);
-    /**
-     * @bref  查找第i个位置所在block的基准rank值
-     *
-     * @param i
-     *
-     * @returns
-     */
-    int searchrank(int i);
+    void searchd(int i,int* c,int* o);
 private:
+	/**
+	 * @bref  由c,o对连接起来的01串
+	 */
 	bitvec_t d;
+	/**
+	 * @bref  rank表的长度n，对应为原始01序列的长度
+	 */
 	int size;
     /**
      * @bref    bitvector的分块后的block的位长

@@ -12,6 +12,7 @@
 
 typedef uint64_t u64;
 typedef int64_t i64;
+typedef unsigned int u32;
 
 #define D (sizeof(u64)*8)
 

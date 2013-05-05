@@ -39,6 +39,12 @@ public:
      * @returns
      */
     u64 getbits(u64 index, int k);
+    /**
+     * @bref  获取当前bitvector的位长
+     *
+     * @returns
+     */
+    int getsize();
 private:
     /**
      * @bref  基础数组，存储01序列

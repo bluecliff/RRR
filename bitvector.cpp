@@ -61,3 +61,7 @@ u64 bitvec_t::getbits(u64 index,int k)
     }
 }
 
+int bitvec_t::getsize()
+{
+    return this->bit_size;
+}
