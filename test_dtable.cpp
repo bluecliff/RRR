@@ -1,6 +1,7 @@
 #include "dtable.h"
 #include <iostream>
 #include <string.h>
+#include "commons.h"
 using namespace std;
 
 int main()
@@ -9,9 +10,9 @@ int main()
 
     for(int i=0;i<10;i++)
     {
-        bitvec[i]=i;
+        bitvec[i]=i+1000;
     }
-    int n=100;
+    int n=200;
     int* rank=new int[n];
     memset(rank,0,sizeof(int)*n);
 
@@ -22,7 +23,7 @@ int main()
         int j=index%D;
         if(bitvec[i] & 1UL<<j)
         {
-            rank[index]+=rank[index-1];
+            rank[index]=1+rank[index-1];
         }
         else
         {
@@ -33,7 +34,11 @@ int main()
     {
         int i=index/D;
         int j=index%D;
-        cout<<(bitvec[i] & (1UL<<j))<<" ";
+        if(bitvec[i] & 1UL<<j)
+            cout<<"1"<<" ";
+        else
+            cout<<"0"<<" ";
+        // cout<<(bitvec[i] & (1UL<<j))<<" ";
     }
     cout<<endl;
 
@@ -42,6 +47,29 @@ int main()
         cout<<rank[index]<<" ";
     }
     cout<<endl;
+
+    dtable* d=new dtable(bitvec,rank,n);
+    for(int i=0;i<n;i++)
+    {
+        int b=((blog(n)+1)/2);
+        int m=i-i%b;
+        for(int index=m;index<(m+b) && index<n;index++)
+        {
+            int i=index/D;
+            int j=index%D;
+            if(bitvec[i] & 1UL<<j)
+                cout<<"1";
+            else
+                cout<<"0";
+        }
+
+        int c,o;
+        d->searchd(i,&c,&o);
+
+        cout<<"===="<<i<<":"<<c<<" "<<o<<endl;
+    }
+
+    delete d;
     delete[] rank;
     return 0;
 }

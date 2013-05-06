@@ -18,7 +18,7 @@ void makecmap(int* cmap,int b,u64 total)
     memset(sum,0,sizeof(int)*(b+1));
     for(u64 i=1;i<total;i++)
     {
-        cmap[i]=++sum[popcount(i)];
+        cmap[i]=sum[popcount(i)]++;
     }
     delete[] sum;
 }
@@ -149,31 +149,36 @@ dtable::dtable(u64* bitvec,int* rank,int n)
 		//向d中写入一个c,o对
 		if(hole >= b)
 		{
-			u64 v = (bitvec[i] >> j)&((1UL-1) >> (D-b));
+			u64 v = (bitvec[i] >> j)&((0UL-1) >> (D-b));
 			if(v==0)
 			{
-				d.setbits(1,0);
-				continue;
+				d.setbits(blog(b)+1,0);
+
 			}
-			int c = popcount(v);
-			int o = cmap[v];
-			d.setbits(blog(b)+1,c);
-			d.setbits(blog(cal(b,c))+1,o);
+            else
+            {
+			    int c = popcount(v);
+                int o = cmap[v];
+                d.setbits(blog(b)+1,c);
+                d.setbits(blog(cal(b,c))+1,o);
+            }
 		}
 		else
 		{
 			u64 v_low = (bitvec[i] >> j);
-			u64 v_high = (bitvec[i+1] & (1UL>>(D-b+hole))) << hole;
+			u64 v_high = (bitvec[i+1] & ((0-1UL)>>(D-b+hole))) << hole;
 			u64 v = v_low+v_high;
 			if(v==0)
 			{
-				d.setbits(1,0);
-				continue;
+				d.setbits(blog(b)+1,0);
 			}
-			int c = popcount(v);
-			int o = cmap[v];
-			d.setbits(blog(b)+1,c);
-			d.setbits(blog(cal(b,c))+1,o);
+            else
+            {
+			    int c = popcount(v);
+			    int o = cmap[v];
+			    d.setbits(blog(b)+1,c);
+			    d.setbits(blog(cal(b,c))+1,o);
+            }
 		}
 		//写入完成
 		if((index+b)%s==0)
@@ -195,7 +200,7 @@ dtable::dtable(u64* bitvec,int* rank,int n)
 			u64 v = bitvec[i]>>j;
 			if (v==0)
 			{
-				d.setbits(1,0);
+				d.setbits(blog(b)+1,0);
 			}
 			else
 			{
@@ -209,15 +214,22 @@ dtable::dtable(u64* bitvec,int* rank,int n)
 		{
 			u64 v_low = bitvec[i]>>j;
 			u64 v_high = bitvec[i+1]<<hole;
-			int c=popcount(v_low+v_high);
-			int o=cmap[v_low+v_high];
-			d.setbits(blog(b)+1,c);
-			d.setbits(blog(cal(b,c))+1,o);
+            if(v_high+v_low)
+            {
+			    int c=popcount(v_low+v_high);
+			    int o=cmap[v_low+v_high];
+			    d.setbits(blog(b)+1,c);
+			    d.setbits(blog(cal(b,c))+1,o);
+            }
+            else
+            {
+                d.setbits(blog(b)+1,0);
+            }
 		}
 	}
 
 	this->p=new compactIntArray(temp_p+1,size/s,temp_p[size/s]);
-	this->l=new compactIntArray(temp_l+1,size/b,temp_l[size/b]);
+	this->l=new compactIntArray(temp_l+1,size/b,s);
 
 	delete[] temp_l;
 	delete[] temp_p;
@@ -240,9 +252,19 @@ void dtable::searchd(int index,int* c,int* o)
 {
 	int ip=index/s;
 	int il=index/b;
-	int p_offset=p->get(ip);
-	int l_offset=l->get(il);
+    int p_offset,l_offset;
+    if(ip==0)
+        p_offset=0;
+    else
+        p_offset=p->get(ip-1);
+    if(il==0)
+        l_offset=0;
+    else
+        l_offset=l->get(il-1);
 	*c=d.getbits(p_offset+l_offset,blog(b)+1);
-	*o=d.getbits(p_offset+l_offset+blog(b)+1,blog(cal(b,*c))+1);
+    if((*c)==0)
+        (*o)=0;
+    else
+	    *o=d.getbits(p_offset+l_offset+blog(b)+1,blog(cal(b,*c))+1);
 }
 
