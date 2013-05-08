@@ -25,15 +25,15 @@ public:
     gtable(int b);
     ~gtable();
     /**
-     * @bref  获取第i类数中的第o个数的第k位的rank值
+     * @bref  获取第c类数中的第o个数的第k位的rank值
      *
-     * @param i
+     * @param c
      * @param o
      * @param k
      *
      * @returns   rank[i,o,k]
      */
-    int search(int i,int o,int k);
+    int search(int c,int o,int k);
 private:
     u64* g;
     int b;

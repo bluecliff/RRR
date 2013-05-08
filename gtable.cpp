@@ -7,8 +7,8 @@
  */
 #include "gtable.h"
 #include "commons.h"
-
-
+#include <cstdlib>
+#include <string.h>
 
 gtable::gtable()
 {
@@ -32,19 +32,23 @@ gtable::gtable(int b)
     }
     this->size=bits_size[b]/D+1;
     this->g=new u64[this->size];
+	memset(g,0,sizeof(u64)*size);
 
     for(u64 i=1;i<(1UL<<this->b);++i)
     {
         //i属于第k类的第t个数
         int k=popcount(i);
-        int t=this->cmap[i]-1;
+        int t=this->cmap[i];
 
         int offset=bits_size[k-1]+t*(blog(k)+1)*b;
         //从offset开始填充01串i的rank值
-        for(int j=1,u64 rank=0;j<=b;++j)
+		u64 rank=0;
+        for(int j=1;j<=b;++j)
         {
             //第j-1位的rank值
-            rank+=(i & (1UL << (j-1)));
+			if(i & (1UL << (j-1)))
+				rank++;
+            //rank+=(i & (1UL << (j-1)));
             int m=offset/D;
             int n=offset%D;
             //注意跨字的问题
@@ -53,14 +57,14 @@ gtable::gtable(int b)
             else
             {
                 this->setbits(m,n,rank);
-                this->setbits(m+1,0,rank>>(D-l));
+                this->setbits(m+1,0,rank>>(D-n));
             }
             offset+=((blog(k)+1));
         }
     }
 
 }
-~gtable::gtable()
+gtable::~gtable()
 {
     delete[] this->g;
     this->b=0;
@@ -77,7 +81,7 @@ void gtable::makecmap()
     memset(sum,0,sizeof(int)*(b+1));
     for(u64 i=1;i<total;i++)
     {
-        this->cmap[i]=++sum[popcount(i)];
+        this->cmap[i]=sum[popcount(i)]++;
     }
     delete[] sum;
 }

@@ -49,6 +49,7 @@ int main()
     cout<<endl;
 
     dtable* d=new dtable(bitvec,rank,n);
+    /*
     for(int i=0;i<n;i++)
     {
         int b=((blog(n)+1)/2);
@@ -68,7 +69,14 @@ int main()
 
         cout<<"===="<<i<<":"<<c<<" "<<o<<endl;
     }
-
+    */
+    int b=((blog(n)+1)/2);
+    int s=2*b*(blog(n)+1);
+    for(int i=0;i<n;i++)
+    {
+        cout<<i/s<<" "<<i/b<<" ";
+        cout<<d->searchdir(i)<<endl;
+    }
     delete d;
     delete[] rank;
     return 0;

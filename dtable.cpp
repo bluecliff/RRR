@@ -49,14 +49,29 @@ dtable::dtable(u64* bitvec,int* rank,int n)
 
 	this->r=new compactIntArray(size/s,rank[n-1]);
 	//最大数可以是s-b
-	this->q=new compactIntArray((size/s+1)*(s/b-1),s);
+	this->q=new compactIntArray(size/b,s);
 
-	for(int i=s;i<n;i+=s)
+	for(int i=s;i<=n;i+=s)
 	{
 		r->set(i/s-1,rank[i-1]);
 		//r[i/s-1]=rank[i-1];
 	}
 
+    for(int i=b;i<=n;i+=b)
+    {
+        if(i<s)
+        {
+            q->set(i/b-1,rank[i-1]);
+        }
+        else
+        {
+            q->set(i/b-1,rank[i-1]-rank[i-i%s-1]);
+        }
+    }
+
+    /**********考虑到每个大块的地一个小块的rank都是0,理论上这个rank是没必要存储的，注释中的代码是这种思路的实现
+     但实际会造成代码的复杂度的提高和容错性能的下降，所以不再才用这种想法*/
+    /*********************************************
 	int step=0;
 	for(int i=b;i<n;i+=b)
 	{
@@ -73,7 +88,7 @@ dtable::dtable(u64* bitvec,int* rank,int n)
 			//q[step++]=rank[i-1]-r[i/s-1];
 		}
 	}
-
+    *************************************************************/
 
 
     u64 total=1UL<<this->b;
@@ -268,3 +283,17 @@ void dtable::searchd(int index,int* c,int* o)
 	    *o=d.getbits(p_offset+l_offset+blog(b)+1,blog(cal(b,*c))+1);
 }
 
+int dtable::searchdir(int index)
+{
+     int si=index/s;
+     int bi=index/b;
+     if(bi==0)
+     {
+        return 0;
+     }
+     if(si==0)
+     {
+         return q->get(bi-1);
+     }
+     return r->get(si-1)+q->get(bi-1);
+}

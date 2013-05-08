@@ -34,6 +34,14 @@ public:
      * @param o
      */
     void searchd(int i,int* c,int* o);
+    /**
+     * @bref  搜索第i个位所在的S块和B块的rank值
+     *
+     * @param i
+     *
+    * @returns
+     */
+    int searchdir(int i);
 private:
 	/**
 	 * @bref  由c,o对连接起来的01串

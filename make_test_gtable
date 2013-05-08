@@ -1,0 +1,10 @@
+test_gtable:test_gtable.o commons.o gtable.o
+	g++ -g test_gtable.o commons.o gtable.o -o test_gtable
+test_gtable.o:test_gtable.cpp
+	g++ -c -g test_gtable.cpp
+commons.o:commons.cpp commons.h
+	g++ -c -g commons.cpp
+gtable.o:gtable.cpp gtable.h
+	g++ -c -g gtable.cpp
+clean:
+	rm test_gtable test_gtable.o commons.o gtable.o
