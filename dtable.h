@@ -10,6 +10,8 @@
 #include "typedef.h"
 #include "bitvector.h"
 
+#include <fstream>
+
 class compactIntArray;
 
 class dtable
@@ -42,6 +44,13 @@ public:
     * @returns
      */
     int searchdir(int i);
+	/**
+	 * @bref  返回小块儿b的位
+	 *
+	 * @returns
+	 */
+	int get_b();
+	bool write(std::ofstream& fout);
 private:
 	/**
 	 * @bref  由c,o对连接起来的01串

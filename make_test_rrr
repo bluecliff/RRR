@@ -1,0 +1,26 @@
+objects=test_rrr.o rrr.o gtable.o dtable.o bitvector.o commons.o compactIntArray.o
+debug=-g
+cc=g++
+test_rrr:$(objects)
+	$(cc) $(debug) -o test_rrr $(objects)
+test_rrr.o:test_rrr.cpp
+	$(cc) $(debug) -c test_rrr.cpp
+rrr.o:rrr.cpp rrr.h
+	$(cc) $(debug) -c rrr.cpp
+dtable.o:dtable.cpp dtable.h
+	$(cc) $(debug) -c dtable.cpp
+gtable.o:gtable.cpp gtable.h
+	$(cc) $(debug) -c gtable.cpp
+commons.o:commons.cpp commons.h
+	$(cc) $(debug) -c commons.cpp
+bitvector.o:bitvector.cpp bitvector.h
+	$(cc) $(debug) -c bitvector.cpp
+compactIntArray.o:compactIntArray.cpp compactIntArray.h
+	$(cc) $(debug) -c compactIntArray.cpp
+	
+	
+
+	
+	
+
+

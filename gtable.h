@@ -9,6 +9,7 @@
 #define GTABLE_H_
 
 #include "typedef.h"
+#include <fstream>
 
 /**
  * @bref  计算组合数c(n,m)
@@ -34,6 +35,7 @@ public:
      * @returns   rank[i,o,k]
      */
     int search(int c,int o,int k);
+	bool write(std::ofstream& fout);
 private:
     u64* g;
     int b;

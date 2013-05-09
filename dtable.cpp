@@ -36,6 +36,7 @@ dtable::dtable()
     this->q=NULL;
 }
 
+
 dtable::dtable(u64* bitvec,int* rank,int n)
 {
 	//直接带入公式的话s不一定是b的整数倍，这样子太恶心了，故做了一些小调整，保证s是b的整数倍
@@ -263,6 +264,11 @@ dtable::~dtable()
     delete this->q;
 }
 
+int dtable::get_b()
+{
+	return this->b;
+}
+
 void dtable::searchd(int index,int* c,int* o)
 {
 	int ip=index/s;
@@ -296,4 +302,30 @@ int dtable::searchdir(int index)
          return q->get(bi-1);
      }
      return r->get(si-1)+q->get(bi-1);
+}
+
+bool dtable::write(std::ofstream& fout)
+{
+	if(fout.is_open())
+	{
+		fout.write((char*)&size,sizeof(int));
+		fout.write((char*)&b,sizeof(int));
+		fout.write((char*)&s,sizeof(int));
+		if(fout.bad()||fout.fail())
+			return false;
+		if(!d.write(fout))
+			return false;
+
+		if(!p->write(fout))
+			return false;
+		if(!r->write(fout))
+			return false;
+		if(!l->write(fout))
+			return false;
+		if(!q->write(fout))
+			return false;
+		return true;
+
+	}
+	return false;
 }

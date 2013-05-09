@@ -110,3 +110,17 @@ int gtable::search(int i,int o, int k)
         return low+high;
     }
 }
+bool gtable::write(std::ofstream& fout)
+{
+	if(fout.is_open())
+	{
+		fout.write((char*)&b,sizeof(int));
+		fout.write((char*)&size,sizeof(int));
+		fout.write((char*)g,sizeof(u64)*size);
+		if(fout.fail() || fout.bad())
+			return false;
+		else
+			return true;
+	}
+	return false;
+}
