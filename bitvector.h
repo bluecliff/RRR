@@ -45,6 +45,7 @@ public:
      * @returns
      */
     int getsize();
+	bool write(ofstream& fout);
 private:
     /**
      * @bref  基础数组，存储01序列

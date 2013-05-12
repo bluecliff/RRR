@@ -65,3 +65,23 @@ int bitvec_t::getsize()
 {
     return this->bit_size;
 }
+
+bool bitvec_t::write(ofstream& fout)
+{
+	if(fout.is_open())
+	{
+		fout.write((char*)&bit_size,sizeof(u64));
+		for(size_t i=0;i<bitvec.size();i++)
+		{
+			fout.write((char*)&bitvec[i],sizeof(u64));
+		}
+		if(fout.bad() || fout.fail())
+			return false;
+		else
+			return true;
+	}
+	else
+	{
+		return false;
+	}
+}

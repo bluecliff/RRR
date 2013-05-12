@@ -18,7 +18,8 @@ bitvector.o:bitvector.cpp bitvector.h
 compactIntArray.o:compactIntArray.cpp compactIntArray.h
 	$(cc) $(debug) -c compactIntArray.cpp
 	
-	
+clean:
+	rm test_rrr $(objects)	
 
 	
 	
