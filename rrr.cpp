@@ -63,7 +63,7 @@ bool rrr::write(ofstream& fout)
 		fout.write((char*)&bitlength,sizeof(int));
 		if(fout.fail() || fout.bad())
 			return false;
-		if(d->write(fout) && g->write(fout))
+		if(d->write(fout)) //&& g->write(fout))
 			return true;
 		else
 			return false;

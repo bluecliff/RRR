@@ -16,7 +16,7 @@ int main(int argc,char* argv[])
 	memset(bitvec,0,sizeof(u64)*(n/D+1));
 	for(int i=0;i<n;i++)
 	{
-		if(i%3)
+		if(i%10)
 		{
 			bitvec[i/D]|=(1UL<<(i%D));
 		}
@@ -25,27 +25,30 @@ int main(int argc,char* argv[])
 
 
 
-	time_t start=time(NULL);
 	rrr r(n,bitvec);
-	/*
+
+	time_t start=time(NULL);
+
 	for(int i=0;i<n;i++)
 	{
-		cout<<r.getbit(i)<<" ";
+		int k=r.getbit(i);
 	}
-	cout<<endl;
-	for(int i=0;i<n;i++)
-	{
-		cout<<r.rank(i)<<" ";
-	}
-	cout<<endl;
-	*/
 	time_t end=time(NULL);
-	seconds = difftime(end,start);
-	
+	double seconds_1=difftime(end,start);
+	start=time(NULL);
+	for(int i=0;i<n;i++)
+	{
+		int k=r.rank(i);
+	}
+
+	end=time(NULL);
+	double seconds_2 = difftime(end,start);
+
 	ofstream fout;
 	fout.open("test_rrr.out",ios::binary);
 	r.write(fout);
-	cout<<n<<"(2^"<<m<<")"<<"\t"<<(end-start)<<"\t"<<fout.tellp()<<endl;	
+	double ressize=fout.tellp();
+	cout<<m<<"\t"<<n<<"\t"<<ressize<<"\t"<<ressize*8.0/n<<"\t"<<seconds_1/n*1000000<<"\t"<<seconds_2/n*1000000<<endl;
 	fout.close();
 
 	delete[] bitvec;
